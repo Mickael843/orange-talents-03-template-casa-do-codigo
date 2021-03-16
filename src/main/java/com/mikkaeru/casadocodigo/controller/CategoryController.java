@@ -1,0 +1,28 @@
+package com.mikkaeru.casadocodigo.controller;
+
+import com.mikkaeru.casadocodigo.dto.CategoryRequest;
+import com.mikkaeru.casadocodigo.repository.CategoryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.transaction.Transactional;
+import javax.validation.Valid;
+
+@RestController
+@RequestMapping("/categories")
+public class CategoryController {
+
+    @Autowired
+    private CategoryRepository repository;
+
+    @PostMapping
+    @Transactional
+    public ResponseEntity<?> saveCategory(@RequestBody @Valid CategoryRequest request) {
+        repository.save(request.toModel());
+        return ResponseEntity.ok().build();
+    }
+}
