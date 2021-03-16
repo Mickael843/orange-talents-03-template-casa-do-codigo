@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-@Entity(name = "tb_author")
+@Entity
 public class Author {
 
     @Id

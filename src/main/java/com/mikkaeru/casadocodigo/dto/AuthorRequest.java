@@ -1,6 +1,7 @@
 package com.mikkaeru.casadocodigo.dto;
 
 import com.mikkaeru.casadocodigo.model.Author;
+import com.mikkaeru.casadocodigo.validator.UniqueValue;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -13,6 +14,7 @@ public class AuthorRequest {
 
     @Email
     @NotBlank
+    @UniqueValue(fieldName = "email", domainClass = Author.class)
     private final String email;
 
     @NotBlank
