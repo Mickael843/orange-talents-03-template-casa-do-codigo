@@ -4,14 +4,17 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mikkaeru.casadocodigo.model.Author;
 import com.mikkaeru.casadocodigo.model.Book;
 import com.mikkaeru.casadocodigo.model.Category;
+import com.mikkaeru.casadocodigo.repository.AuthorRepository;
+import com.mikkaeru.casadocodigo.repository.CategoryRepository;
 import com.mikkaeru.casadocodigo.validator.ExistsId;
 import com.mikkaeru.casadocodigo.validator.UniqueValue;
 import org.hibernate.validator.constraints.ISBN;
 
-import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Optional;
 
 import static com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING;
 
@@ -67,10 +70,14 @@ public class BookRequest {
         this.categoryId = categoryId;
     }
 
-    public Book toModel(EntityManager entityManager) {
-        @NotNull Author author = entityManager.find(Author.class, authorId);
-        @NotNull Category category = entityManager.find(Category.class, categoryId);
+    public Book toModel(AuthorRepository authorRepository, CategoryRepository categoryRepository) {
+        Optional<Author> author = authorRepository.findById(authorId);
+        Optional<Category> category = categoryRepository.findById(categoryId);
 
-        return new Book(isbn, title, synopsis, summary, price, pageNumber, publicationDate, author, category);
+        if (author.isEmpty() || category.isEmpty()) {
+            throw new EntityNotFoundException();
+        }
+
+        return new Book(isbn, title, synopsis, summary, price, pageNumber, publicationDate, author.get(), category.get());
     }
 }

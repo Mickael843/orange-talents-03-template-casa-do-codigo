@@ -2,7 +2,6 @@ package com.mikkaeru.casadocodigo.controller;
 
 import com.mikkaeru.casadocodigo.dto.CategoryRequest;
 import com.mikkaeru.casadocodigo.repository.CategoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,8 +15,11 @@ import javax.validation.Valid;
 @RequestMapping("/categories")
 public class CategoryController {
 
-    @Autowired
     private CategoryRepository repository;
+
+    public CategoryController(CategoryRepository repository) {
+        this.repository = repository;
+    }
 
     @PostMapping
     @Transactional

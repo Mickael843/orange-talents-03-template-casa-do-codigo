@@ -23,9 +23,10 @@ public class Book {
     @Column(nullable = false, unique = true)
     private @NotBlank String title;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 500)
     private @NotBlank @Size(max = 500) String synopsis;
 
+    @Lob
     private String summary;
 
     @Column(nullable = false)

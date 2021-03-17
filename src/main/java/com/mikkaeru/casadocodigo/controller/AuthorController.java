@@ -2,7 +2,6 @@ package com.mikkaeru.casadocodigo.controller;
 
 import com.mikkaeru.casadocodigo.dto.AuthorRequest;
 import com.mikkaeru.casadocodigo.repository.AuthorRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,8 +15,11 @@ import javax.validation.Valid;
 @RequestMapping("/authors")
 public class AuthorController {
 
-    @Autowired
     private AuthorRepository authorRepository;
+
+    public AuthorController(AuthorRepository authorRepository) {
+        this.authorRepository = authorRepository;
+    }
 
     @PostMapping
     @Transactional
