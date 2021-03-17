@@ -1,4 +1,4 @@
-package com.mikkaeru.casadocodigo.dto;
+package com.mikkaeru.casadocodigo.dto.in;
 
 import com.mikkaeru.casadocodigo.model.Author;
 import com.mikkaeru.casadocodigo.validator.UniqueValue;

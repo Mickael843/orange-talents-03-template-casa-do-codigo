@@ -1,7 +1,9 @@
 package com.mikkaeru.casadocodigo.controller;
 
-import com.mikkaeru.casadocodigo.dto.BookRequest;
-import com.mikkaeru.casadocodigo.dto.BookResponse;
+import com.mikkaeru.casadocodigo.dto.in.BookRequest;
+import com.mikkaeru.casadocodigo.dto.out.BookDetailResponse;
+import com.mikkaeru.casadocodigo.dto.out.BookResponse;
+import com.mikkaeru.casadocodigo.model.Book;
 import com.mikkaeru.casadocodigo.repository.AuthorRepository;
 import com.mikkaeru.casadocodigo.repository.BookRepository;
 import com.mikkaeru.casadocodigo.repository.CategoryRepository;
@@ -12,6 +14,7 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/books")
@@ -37,7 +40,18 @@ public class BookController {
     @GetMapping
     public ResponseEntity<?> getAllBooks() {
         List<BookResponse> response = new ArrayList<>();
-        bookRepository.findAll().forEach(book -> response.add(book.toDTO()));
+        bookRepository.findAll().forEach(book -> response.add(new BookResponse(book)));
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getOneBook(@PathVariable Long id) {
+        Optional<Book> book = bookRepository.findById(id);
+
+        if (book.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(new BookDetailResponse(book.get()));
     }
 }

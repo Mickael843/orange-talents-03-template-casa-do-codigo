@@ -1,6 +1,6 @@
 package com.mikkaeru.casadocodigo.controller;
 
-import com.mikkaeru.casadocodigo.dto.AuthorRequest;
+import com.mikkaeru.casadocodigo.dto.in.AuthorRequest;
 import com.mikkaeru.casadocodigo.repository.AuthorRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

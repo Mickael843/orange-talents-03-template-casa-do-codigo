@@ -1,4 +1,4 @@
-package com.mikkaeru.casadocodigo.dto;
+package com.mikkaeru.casadocodigo.dto.in;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mikkaeru.casadocodigo.model.Author;

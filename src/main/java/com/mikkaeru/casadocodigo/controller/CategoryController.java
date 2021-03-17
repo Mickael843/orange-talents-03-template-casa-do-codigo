@@ -1,6 +1,6 @@
 package com.mikkaeru.casadocodigo.controller;
 
-import com.mikkaeru.casadocodigo.dto.CategoryRequest;
+import com.mikkaeru.casadocodigo.dto.in.CategoryRequest;
 import com.mikkaeru.casadocodigo.repository.CategoryRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
