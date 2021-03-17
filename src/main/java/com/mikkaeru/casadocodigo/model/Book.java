@@ -1,5 +1,6 @@
 package com.mikkaeru.casadocodigo.model;
 
+import com.mikkaeru.casadocodigo.dto.BookResponse;
 import org.hibernate.validator.constraints.ISBN;
 
 import javax.persistence.*;
@@ -95,5 +96,9 @@ public class Book {
 
     public Category getCategory() {
         return category;
+    }
+
+    public BookResponse toDTO() {
+        return new BookResponse(this.id, this.title);
     }
 }
