@@ -1,13 +1,12 @@
 package com.mikkaeru.casadocodigo.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -18,22 +17,23 @@ public class Author {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
-    @NotBlank
     @Column(nullable = false)
-    private String name;
+    private @NotBlank String name;
 
-    @Email
-    @NotBlank
     @Column(nullable = false, unique = true)
-    private String email;
+    private @NotBlank @Email String email;
 
-    @NotBlank
-    @Size(max = 400)
     @Column(nullable = false, length = 400)
-    private String description;
+    private @NotBlank @Size(max = 400) String description;
 
     @Column(nullable = false)
     private LocalDateTime createAt = LocalDateTime.now();
+
+    @OneToMany(mappedBy = "author")
+    private List<Book> books = new ArrayList<>();
+
+    @Deprecated
+    public Author() { }
 
     public Author(@NotBlank String name, @NotBlank @Email String email, @NotBlank @Size(max = 400) String description) {
         this.name = name;
@@ -55,5 +55,9 @@ public class Author {
 
     public LocalDateTime getCreateAt() {
         return createAt;
+    }
+
+    public List<Book> getBooks() {
+        return books;
     }
 }

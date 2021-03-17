@@ -1,10 +1,9 @@
 package com.mikkaeru.casadocodigo.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
+import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -15,9 +14,14 @@ public class Category {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
-    @NotBlank
     @Column(nullable = false, unique = true)
-    private String name;
+    private @NotBlank String name;
+
+    @OneToMany(mappedBy = "category")
+    private List<Book> books = new ArrayList<>();
+
+    @Deprecated
+    public Category() { }
 
     public Category(@NotBlank String name) {
         this.name = name;
@@ -25,5 +29,9 @@ public class Category {
 
     public String getName() {
         return name;
+    }
+
+    public List<Book> getBooks() {
+        return books;
     }
 }
