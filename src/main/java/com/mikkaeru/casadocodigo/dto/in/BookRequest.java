@@ -6,8 +6,8 @@ import com.mikkaeru.casadocodigo.model.Book;
 import com.mikkaeru.casadocodigo.model.Category;
 import com.mikkaeru.casadocodigo.repository.AuthorRepository;
 import com.mikkaeru.casadocodigo.repository.CategoryRepository;
-import com.mikkaeru.casadocodigo.validator.ExistsId;
-import com.mikkaeru.casadocodigo.validator.UniqueValue;
+import com.mikkaeru.casadocodigo.validator.existsId.ExistsId;
+import com.mikkaeru.casadocodigo.validator.duplicateValue.UniqueValue;
 import org.hibernate.validator.constraints.ISBN;
 
 import javax.persistence.EntityNotFoundException;

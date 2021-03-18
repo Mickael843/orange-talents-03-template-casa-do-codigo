@@ -20,6 +20,9 @@ public class Country {
     @OneToMany(mappedBy = "country")
     private List<State> states = new ArrayList<>();
 
+    @OneToMany(mappedBy = "country")
+    private List<Customer> customers = new ArrayList<>();
+
     @Deprecated
     public Country() { }
 

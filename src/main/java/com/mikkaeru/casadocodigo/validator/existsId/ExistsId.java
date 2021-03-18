@@ -1,4 +1,4 @@
-package com.mikkaeru.casadocodigo.validator;
+package com.mikkaeru.casadocodigo.validator.existsId;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

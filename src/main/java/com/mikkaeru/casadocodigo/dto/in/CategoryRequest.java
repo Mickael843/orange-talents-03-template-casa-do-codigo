@@ -3,7 +3,7 @@ package com.mikkaeru.casadocodigo.dto.in;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mikkaeru.casadocodigo.model.Category;
-import com.mikkaeru.casadocodigo.validator.UniqueValue;
+import com.mikkaeru.casadocodigo.validator.duplicateValue.UniqueValue;
 
 import javax.validation.constraints.NotBlank;
 

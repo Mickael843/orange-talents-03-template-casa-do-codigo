@@ -96,8 +96,4 @@ public class Book {
     public Author getAuthor() {
         return author;
     }
-
-    public Category getCategory() {
-        return category;
-    }
 }

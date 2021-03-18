@@ -45,19 +45,7 @@ public class Author {
         return name;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public LocalDateTime getCreateAt() {
-        return createAt;
-    }
-
-    public List<Book> getBooks() {
-        return books;
     }
 }

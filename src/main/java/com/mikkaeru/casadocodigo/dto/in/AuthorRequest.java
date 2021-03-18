@@ -1,7 +1,7 @@
 package com.mikkaeru.casadocodigo.dto.in;
 
 import com.mikkaeru.casadocodigo.model.Author;
-import com.mikkaeru.casadocodigo.validator.UniqueValue;
+import com.mikkaeru.casadocodigo.validator.duplicateValue.UniqueValue;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

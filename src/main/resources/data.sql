@@ -7,3 +7,5 @@ INSERT INTO BOOK(id, isbn, title, synopsis, summary, price, page_number, publica
     VALUES(1, '9788594120007', 'Um titulo duvidoso', 'Uma sinopse mais duvidosa ainda', 'sumario legal', 233, 123, '2023-08-12', 1, 1);
 
 INSERT INTO COUNTRY(id, name) VALUES(1, 'Brasil');
+
+INSERT INTO STATE(id, name, country_id) VALUES(1, 'Minas Gerais', 1);

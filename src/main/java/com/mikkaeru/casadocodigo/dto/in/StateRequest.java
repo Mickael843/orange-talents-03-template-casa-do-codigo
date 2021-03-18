@@ -3,8 +3,8 @@ package com.mikkaeru.casadocodigo.dto.in;
 import com.mikkaeru.casadocodigo.model.Country;
 import com.mikkaeru.casadocodigo.model.State;
 import com.mikkaeru.casadocodigo.repository.CountryRepository;
-import com.mikkaeru.casadocodigo.validator.ExistsId;
-import com.mikkaeru.casadocodigo.validator.UniqueValue;
+import com.mikkaeru.casadocodigo.validator.existsId.ExistsId;
+import com.mikkaeru.casadocodigo.validator.duplicateValue.UniqueValue;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.constraints.NotBlank;
